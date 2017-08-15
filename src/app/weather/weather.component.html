@@ -1,0 +1,14 @@
+<div *ngIf="result">
+  <h3>Location: {{ result.name }}</h3>
+  <h3>Weather: {{ result.weather[0].description }}</h3>
+  <h3 *ngIf="c">Current Temp: {{ result.main.temp - 273.15 | number:'1.1-1' }}</h3>
+  <h3 *ngIf="!c">Current Temp: {{ result.main.temp *9/5 - 459.67 | number:'1.1-1' }}</h3>
+  <h3 *ngIf="c">Low Temp: {{ result.main.temp_min - 273.15 | number:'1.1-1' }}</h3>
+  <h3 *ngIf="!c">Low Temp: {{ result.main.temp_min *9/5 - 459.67 | number:'1.1-1' }}</h3>
+  <h3 *ngIf="c">High Temp: {{ result.main.temp_max - 273.15 | number:'1.1-1' }}</h3>
+  <h3 *ngIf="!c">High Temp: {{ result.main.temp_max *9/5 - 459.67 | number:'1.1-1' }}</h3>
+</div>
+
+{{ result | json }}
+
+<button (click)="convert(true)" [disabled]="c">C</button><button (click)="convert(false)" [disabled]="!c">F</button>
